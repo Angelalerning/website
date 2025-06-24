@@ -1,11 +1,9 @@
 # Tailwind Traders Website
 
 ![Tailwind Traders Website](Documents/Images/Website.png)
-now with branch protection on main!
 
 [![Build status](https://dev.azure.com/TailwindTraders/Website/_apis/build/status/Website-CI)](https://dev.azure.com/TailwindTraders/Website/_build?definitionId=22)
 
-You can take a look at our live running website following this address: [https://tailwindtraders.com](https://tailwindtraders.com)
 
 # Repositories
 
