@@ -15,7 +15,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: 16   
+        node-version: 22.16.0.   
 
     - name: Install dependencies in client app
       working-directory: TailwindTraders.Website/Source/Tailwind.Traders.Web/ClientApp
