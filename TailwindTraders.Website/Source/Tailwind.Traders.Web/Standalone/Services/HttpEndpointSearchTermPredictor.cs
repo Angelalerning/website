@@ -9,8 +9,10 @@ using Azure.Storage.Blobs.Specialized;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Processing;
+
 
 namespace Tailwind.Traders.Web.Standalone.Services
 {
@@ -37,8 +39,10 @@ namespace Tailwind.Traders.Web.Standalone.Services
         async Task<string> IImageSearchTermPredictor.PredictSearchTerm(Stream imageStream)
         {
             var eventId = new EventId();
-            IImageFormat imageFormat;
-            var image = Image.Load(imageStream, out imageFormat);
+            using var image = Image.Load<Rgba32>(imageStream);
+
+
+
 
             // Resize image constraining it to 500px in any dimension
             var resizedImage = image.Clone(ctx =>
