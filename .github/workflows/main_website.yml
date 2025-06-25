@@ -13,6 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
+      id-token: write #This is required for requesting the JWT
       contents: read #This is required for actions/checkout
 
     steps:
@@ -36,7 +37,7 @@ jobs:
         run: |
          dotnet build --configuration Release
          dotnet publish -c Release -o publish
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -50,5 +51,5 @@ jobs:
         with:
           app-name: 'website'
           slot-name: 'Production'
-          package: .
+          package: TailwindTraders.Website/Source/Tailwind.Traders.Web/publish
           
