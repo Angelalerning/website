@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -13,24 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.8.0" />
-	  <PackageReference Include="CsvHelper" Version="12.1.2" />
-    <PackageReference Include="Dapper" Version="2.0.78" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="5.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.2" />
-    <PackageReference Include="Microsoft.Azure.CognitiveServices.Personalizer" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.6.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.11.6" />
-	  <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
-=======
     <PackageReference Include="Azure.Storage.Blobs" Version="12.19.1" />
-    <PackageReference Include="CsvHelper" Version="33.1.0" /> <!-- UPDATED CsvHelper -->
-    <PackageReference Include="Dapper" Version="2.1.35" /> <!-- UPDATED Dapper -->
+    <PackageReference Include="CsvHelper" Version="33.1.0" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="8.0.5" />
@@ -40,31 +25,17 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.18.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
-    <!-- UPDATED SixLabors.ImageSharp to a non-vulnerable version -->
     <PackageReference Include="SixLabors.ImageSharp" Version="3.0.0" />
-    <!-- RECOMMENDATION: Switch to Microsoft.Data.SqlClient -->
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
->>>>>>> 2101bf4 (final working version)
   </ItemGroup>
-
-  <ItemGroup>
-<<<<<<< HEAD
-    <Content Include="Standalone\OnnxModels\**">
-=======
-      <PackageReference Remove="Microsoft.Data.SqlClient" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <Content Include="Standalone/OnnxModels/**">
->>>>>>> 2101bf4 (final working version)
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
@@ -74,7 +45,6 @@
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(BuildingDocker)' == '' And '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
-    <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
     </Exec>
@@ -84,11 +54,8 @@
   </Target>
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish" Condition=" '$(BuildingDocker)' == '' ">
-    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
-
-    <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)build\**" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
