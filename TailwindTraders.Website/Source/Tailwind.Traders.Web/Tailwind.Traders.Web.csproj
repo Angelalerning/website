@@ -13,7 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <PackageReference Include="Azure.Storage.Blobs" Version="12.8.0" />
 	  <PackageReference Include="CsvHelper" Version="12.1.2" />
     <PackageReference Include="Dapper" Version="2.0.78" />
@@ -45,11 +44,9 @@
     <!-- RECOMMENDATION: Switch to Microsoft.Data.SqlClient -->
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
->>>>>>> 2101bf4 (final working version)
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="Standalone\OnnxModels\**">
 =======
       <PackageReference Remove="Microsoft.Data.SqlClient" />
@@ -58,7 +55,6 @@
 
   <ItemGroup>
     <Content Include="Standalone/OnnxModels/**">
->>>>>>> 2101bf4 (final working version)
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
