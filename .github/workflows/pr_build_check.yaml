@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Build and publish with dotnet
-      working-directory: TailwindTraders.Website/Source/Tailwind.Traders.Web
+      working-directory: TailwindTraders.Website/Source/Tailwind.Traders.Web/publish
       run: |
         dotnet build --configuration Release
         dotnet test --configuration Release
